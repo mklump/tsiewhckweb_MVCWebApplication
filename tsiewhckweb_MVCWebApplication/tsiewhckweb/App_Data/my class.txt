@@ -1,0 +1,16 @@
+Site
+Environment
+HW Version
+IFWI
+FilterUpdate
+WHCK Version
+DUT OS
+SUT OS
+SoftAP OS
+BKC Version
+BT Driver
+WiFi Driver
+WiFi Channels
+NFC Driver
+GPS Driver
+SUT driver

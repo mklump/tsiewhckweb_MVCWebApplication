@@ -1,0 +1,257 @@
+﻿@model IEnumerable<tsiewhckweb.Models.Project_Group>
+
+@{
+    ViewBag.Title = "Testing Status by Project Group, Driver Name, and Test Case Name.";
+    Dictionary<string,int[]> resultSet = null;
+    int value = 0;
+}
+
+<h2>Testing Status by Project Group, Driver Name, and Test Case Name.</h2>
+
+<form id="formProjectStatus"  method="post" action="GetProjectPassFail" enctype="multipart/form-data" runat="server">
+    <table>
+        <tr>
+            <th>
+                @Html.Raw( "Project Group" )
+            </th>
+            <th>
+                @Html.Raw( "Pass Percentage" )
+            </th>
+            <th>
+                @Html.Raw( "Fail Percentage" )
+            </th>
+            <th>
+                @Html.Raw( "Total Counted" )
+            </th>
+        </tr>
+    @{ resultSet = ( Dictionary<string,int[]> ) Cache[ "ProjectStats" ]; }
+    @if( null != resultSet )
+    {
+        foreach( string projectName in resultSet.Keys )
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor( modelItem => projectName )
+                </td>
+                @{ if( 0 != resultSet[projectName][0] )
+                   {
+                       value = ( resultSet[projectName][0]/(resultSet[projectName][0] + resultSet[projectName][1]) ) * 100;
+                   }
+                 }
+                <td>
+                    @Html.DisplayFor( modelItem => value ) %
+                    <!-- Call Pass Percentage Code Here. -->
+                </td>
+                @{ if( 0 != resultSet[projectName][1] )
+                   {
+                       value = ( resultSet[projectName][1]/(resultSet[projectName][0] + resultSet[projectName][1]) ) * 100;
+                   }
+                 }
+                <td>
+                    @Html.DisplayFor( modelItem => value ) %
+                    <!-- Call Fail Percentage Code Here. -->
+                </td>
+                @{ value = resultSet[projectName][0] + resultSet[projectName][1]; }
+                <td>
+                    @Html.DisplayFor( modelItem => value )
+                </td>
+                @*<td>
+                    @Html.ActionLink( "Details", "Details", new { id=item.ConfigNumID } )
+                </td>*@
+            </tr>
+        }
+    }
+    </table>
+    <input type="submit" id="Refresh1" value="Refresh" runat="server" formmethod="post" />
+</form>
+<br /><br />
+<form id="formDriverStatus"  method="post" action="GetDriverPassFail" enctype="multipart/form-data" runat="server" >
+    <table>
+        <tr>
+            <th>
+                @Html.Raw( "Driver Name" )
+            </th>
+            <th>
+                @Html.Raw( "Pass Percentage" )
+            </th>
+            <th>
+                @Html.Raw( "Fail Percentage" )
+            </th>
+            <th>
+                @Html.Raw( "Total Counted" )
+            </th>
+        </tr>
+        @{ resultSet = ( Dictionary<string,int[]> ) Cache[ "DriverStats" ]; }
+        @if( null != resultSet )
+        {
+            <tr>
+                <td>
+                    @Html.Raw( "BT Driver" )
+                </td>
+                @{ if (0 != resultSet["BT Driver"][0])
+                   {
+                       value = ( resultSet["BT Driver"][0] / (resultSet["BT Driver"][0] + resultSet["BT Driver"][1]) ) * 100;
+                   }
+                }
+                <td>
+                    @Html.DisplayFor( modelItem => value ) %
+                    <!-- Call Pass Percentage Code Here. -->
+                </td>
+                @{ if (0 != resultSet["BT Driver"][1])
+                   {
+                       value = ( resultSet["BT Driver"][1] / (resultSet["BT Driver"][0] + resultSet["BT Driver"][1]) ) * 100;
+                   }
+                }
+                <td>
+                    @Html.DisplayFor( modelItem => value ) %
+                    <!-- Call Fail Percentage Code Here. -->
+                </td>
+                @{ value = resultSet["BT Driver"][0] + resultSet["BT Driver"][1]; }
+                <td>
+                    @Html.DisplayFor( modelItem => value )
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Raw( "WiFi Driver" )
+                </td>
+                @{ if( 0 != resultSet["WiFi Driver"][0] )
+                   {
+                       value = ( resultSet["WiFi Driver"][0] / (resultSet["WiFi Driver"][0] + resultSet["WiFi Driver"][1]) ) * 100;
+                   }
+                }
+                <td>
+                    @Html.DisplayFor( modelItem => value ) %
+                    <!-- Call Pass Percentage Code Here. -->
+                </td>
+                @{ if( 0 != resultSet["WiFi Driver"][1] )
+                   {
+                       value = ( resultSet["WiFi Driver"][1] / (resultSet["WiFi Driver"][0] + resultSet["WiFi Driver"][1]) ) * 100;
+                   }
+                }
+                <td>
+                    @Html.DisplayFor( modelItem => value ) %
+                    <!-- Call Fail Percentage Code Here. -->
+                </td>
+                @{ value = resultSet["WiFi Driver"][0] + resultSet["WiFi Driver"][1]; }
+                <td>
+                    @Html.DisplayFor( modelItem => value )
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Raw( "NFC Driver" )
+                </td>
+                @{ if( 0 != resultSet["NFC Driver"][0] )
+                   {
+                       value = ( resultSet["NFC Driver"][0] / (resultSet["NFC Driver"][0] + resultSet["NFC Driver"][1]) ) * 100;
+                   }
+                }
+                <td>
+                    @Html.DisplayFor( modelItem => value ) %
+                    <!-- Call Pass Percentage Code Here. -->
+                </td>
+                @{ if( 0 != resultSet["NFC Driver"][1] )
+                   {
+                       value = ( resultSet["NFC Driver"][1] / (resultSet["NFC Driver"][0] + resultSet["NFC Driver"][1]) ) * 100;
+                   }
+                }
+                <td>
+                    @Html.DisplayFor( modelItem => value ) %
+                    <!-- Call Fail Percentage Code Here. -->
+                </td>
+                @{ value = resultSet["NFC Driver"][0] + resultSet["NFC Driver"][1]; }
+                <td>
+                    @Html.DisplayFor( modelItem => value )
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Raw( "GPS Driver" )
+                </td>
+                @{ if( 0 != resultSet["GPS Driver"][0] )
+                   {
+                       value = ( resultSet["GPS Driver"][0] / (resultSet["GPS Driver"][0] + resultSet["GPS Driver"][1]) ) * 100;
+                   }
+                }
+                <td>
+                    @Html.DisplayFor( modelItem => value ) %
+                    <!-- Call Pass Percentage Code Here. -->
+                </td>
+                @{ if( 0 != resultSet["GPS Driver"][1] )
+                   {
+                       value = ( resultSet["GPS Driver"][1] / (resultSet["GPS Driver"][0] + resultSet["GPS Driver"][1]) ) * 100;
+                   }
+                }
+                <td>
+                    @Html.DisplayFor( modelItem => value ) %
+                    <!-- Call Fail Percentage Code Here. -->
+                </td>
+                @{ value = resultSet["GPS Driver"][0] + resultSet["GPS Driver"][1]; }
+                <td>
+                    @Html.DisplayFor( modelItem => value )
+                </td>
+            </tr>
+        }
+    </table>
+    <input type="submit" id="Refresh2" value="Refresh" runat="server" formmethod="post" />
+</form>
+<br /><br />
+
+<form id="formTestCaseStatus"  method="post" action="GetTestCasePassFail" enctype="multipart/form-data" runat="server" >
+    <table>
+        <tr>
+            <th>
+                @Html.Raw( "Test Case Name" )
+            </th>
+            <th>
+                @Html.Raw( "Pass Percentage" )
+            </th>
+            <th>
+                @Html.Raw( "Fail Percentage" )
+            </th>
+            <th>
+                @Html.Raw( "Total Counted" )
+            </th>
+        </tr>
+    @{ resultSet = ( Dictionary<string,int[]> ) Cache[ "TestCaseStats" ]; }
+    @if( null != resultSet )
+    {
+        foreach( string testName in resultSet.Keys )
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor( modelItem => testName )
+                </td>
+                @{ if( 0 != resultSet[testName][0] )
+                   {
+                       value = ( resultSet[testName][0]/(resultSet[testName][0] + resultSet[testName][1]) ) * 100;
+                   }
+                }
+                <td>
+                    @Html.DisplayFor( modelItem => value ) %
+                    <!-- Call Pass Percentage Code Here. -->
+                </td>
+                @{ if( 0 != resultSet[testName][1] )
+                   {
+                       value = ( resultSet[testName][1]/(resultSet[testName][0] + resultSet[testName][1]) ) * 100;
+                   }
+                }
+                <td>
+                    @Html.DisplayFor( modelItem => value ) %
+                    <!-- Call Fail Percentage Code Here. -->
+                </td>
+                @{ value = resultSet[testName][0] + resultSet[testName][1]; }
+                <td>
+                    @Html.DisplayFor( modelItem => value )
+                </td>
+                @*<td>
+                    @Html.ActionLink( "Details", "Details", new { id=item.ConfigNumID } )
+                </td>*@
+            </tr>
+        }
+    }
+
+    </table>
+    <input type="submit" id="Refresh3" value="Refresh" runat="server" formmethod="post" />
+</form>

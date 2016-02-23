@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tsiewhckweb", "tsiewhckweb\tsiewhckweb.csproj", "{ED3E81F5-88BA-4E8D-932E-D83B8051206C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tsiewhckweb.Tests", "tsiewhckweb.Tests\tsiewhckweb.Tests.csproj", "{BDC18006-BF75-439D-A546-781A8476DB73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDC18006-BF75-439D-A546-781A8476DB73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC18006-BF75-439D-A546-781A8476DB73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC18006-BF75-439D-A546-781A8476DB73}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BDC18006-BF75-439D-A546-781A8476DB73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC18006-BF75-439D-A546-781A8476DB73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDC18006-BF75-439D-A546-781A8476DB73}.Release|x86.ActiveCfg = Release|Any CPU
+		{ED3E81F5-88BA-4E8D-932E-D83B8051206C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED3E81F5-88BA-4E8D-932E-D83B8051206C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED3E81F5-88BA-4E8D-932E-D83B8051206C}.Debug|x86.ActiveCfg = Debug|x86
+		{ED3E81F5-88BA-4E8D-932E-D83B8051206C}.Debug|x86.Build.0 = Debug|x86
+		{ED3E81F5-88BA-4E8D-932E-D83B8051206C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED3E81F5-88BA-4E8D-932E-D83B8051206C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED3E81F5-88BA-4E8D-932E-D83B8051206C}.Release|x86.ActiveCfg = Release|x86
+		{ED3E81F5-88BA-4E8D-932E-D83B8051206C}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

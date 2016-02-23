@@ -1,0 +1,20 @@
+ConfigurationModel.cs codefile was written manually.
+ConfiguraitonModel.cs created separate DB tsiewhckwebDBs, ConfigurationControler.cs, and also Configuration/Create.cshtml, Configuration/Delete.cshtml, Configuration/details.cshtml, Configuration/Edit.cshtml, Configuration/Index.cshtml view files.
+
+tsiewhckwebDB (tsiewhckweb.Models) == Model Class for Add Control wizard
+tsiewhckwebDBContext (tsiewhckweb.Models) == Data Context Class for Add Control wizard
+
+Updates:
+10/23/2012 - Configuration View and Details are working.
+Left to do: 1) Implement Solomon's Test Result inclusion to the database.
+			This should be done, finished, and tested.
+			2) Implement IDsid last user who access or modified a test result.
+			Update on IDsid problem: Any user accessing this web application
+			will authenticate as "Anonymous". To implement this, we must further
+			implement Solomon's Login page credential to extend to the configuration
+			page context also.
+11/14/2012 - Beta Release v1.0 - Full features of
+			1) Create a BCK Configuration uploaded with a WHCK test results package is completed.
+			2) Implement full test results package import as the new BCK details view page.
+			3) Create a TestCase with a TopLevel Project Group name.
+			4) View current test results pass and failing statistics for all Project Groups, by Test Case Name, and by DriverName.

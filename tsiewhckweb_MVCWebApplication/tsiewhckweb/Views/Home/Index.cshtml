@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                WHCK is the Windows Hardware Certification Kit. WHCK (Windows 8) is the successor of WHQL (Windows 7).
+            </p>
+        </div>
+    </section>
+}
+<h3>Key areas of interest:</h3>
+<ol class="round">
+    <li class="one">
+        <h5>WHCK in a nutshell</h5>
+        Enabling cross-site WHCK status overview quickly and easily. <a href="http://wiki.ith.intel.com/display/TSIEWIN/Home">Wiki</a></li>
+    <li class="two">
+        <h5>Summary</h5>
+        See the big picture and hide the details. <a href="https://sharepoint.amr.ith.intel.com/sites/TSIE-CT/SitePages/Home.aspx">
+            SharePoint</a></li>
+    <li class="three">
+        <h5><a href="~/Configuration/">Configuration</a></h5>
+        Click the Configuration link to view WHCK package results configuration.
+        <br />
+        Describe the setup in use by you and your group. <a href="https://sharepoint.amr.ith.intel.com/sites/SWE/CLVT545/Shared%20Documents/Forms/AllItems.aspx?RootFolder=%2Fsites%2FSWE%2FCLVT545%2FShared%20Documents%2FSubsystem%2FCWS%5FWHCK">TestingStatus.xlsx</a></li>
+    <li class="four">
+        <h5><a href="~/TestCase/">TestCase Management</a></h5>
+        Click the TestCase Management link to view/edit existing test cases per component and top-most project.
+        <br />
+    </li>
+    <li class="five">
+        <h5><a href="~/TestingStatus/">Testing Status</a></h5>
+        Click the Testing Status link to view the present passing averaged standings for each overall Project, by Driver Name, and by Test Case Name.
+        <br />
+    </li>
+</ol>

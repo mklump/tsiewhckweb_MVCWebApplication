@@ -1,0 +1,747 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="whckwebModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="whckwebModelStoreContainer">
+          <EntitySet Name="Bug" EntityType="whckwebModel.Store.Bug" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Component" EntityType="whckwebModel.Store.Component" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Driver_Config" EntityType="whckwebModel.Store.Driver_Config" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Login" EntityType="whckwebModel.Store.Login" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Machine_Config" EntityType="whckwebModel.Store.Machine_Config" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Package" EntityType="whckwebModel.Store.Package" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Project_Group" EntityType="whckwebModel.Store.Project_Group" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Result" EntityType="whckwebModel.Store.Result" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Test_Config" EntityType="whckwebModel.Store.Test_Config" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TestCase" EntityType="whckwebModel.Store.TestCase" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Component_Project_Group" Association="whckwebModel.Store.FK_Component_Project_Group">
+            <End Role="Project_Group" EntitySet="Project_Group" />
+            <End Role="Component" EntitySet="Component" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_Login" Association="whckwebModel.Store.FK_Package_Login">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_Test_Config" Association="whckwebModel.Store.FK_Package_Test_Config">
+            <End Role="Test_Config" EntitySet="Test_Config" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Group_Test_Config" Association="whckwebModel.Store.FK_Project_Group_Test_Config">
+            <End Role="Test_Config" EntitySet="Test_Config" />
+            <End Role="Project_Group" EntitySet="Project_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_Bug" Association="whckwebModel.Store.FK_Result_Bug">
+            <End Role="Bug" EntitySet="Bug" />
+            <End Role="Result" EntitySet="Result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_Package" Association="whckwebModel.Store.FK_Result_Package">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="Result" EntitySet="Result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_TestCase" Association="whckwebModel.Store.FK_Result_TestCase">
+            <End Role="TestCase" EntitySet="TestCase" />
+            <End Role="Result" EntitySet="Result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Config_Driver_Config" Association="whckwebModel.Store.FK_Test_Config_Driver_Config">
+            <End Role="Driver_Config" EntitySet="Driver_Config" />
+            <End Role="Test_Config" EntitySet="Test_Config" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Config_Machine_Config" Association="whckwebModel.Store.FK_Test_Config_Machine_Config">
+            <End Role="Machine_Config" EntitySet="Machine_Config" />
+            <End Role="Test_Config" EntitySet="Test_Config" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestCase_Component" Association="whckwebModel.Store.FK_TestCase_Component">
+            <End Role="Component" EntitySet="Component" />
+            <End Role="TestCase" EntitySet="TestCase" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Bug">
+          <Key>
+            <PropertyRef Name="BugID" />
+          </Key>
+          <Property Name="BugID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="HSD" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CSP" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WINQUAL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MANAGEPRO" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Component">
+          <Key>
+            <PropertyRef Name="ComponentID" />
+          </Key>
+          <Property Name="ComponentID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Project_GroupID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Driver_Config">
+          <Key>
+            <PropertyRef Name="DriverConfigID" />
+          </Key>
+          <Property Name="DriverConfigID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Team" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BKC_Version" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SoftAP" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BT_Driver" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WiFi_Driver" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NFC_Driver" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GPS_Driver" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDsid" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Last_AccessTime" Type="datetime" Nullable="false" />
+          <Property Name="EAM_role" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="CDIS_email" Type="nvarchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Machine_Config">
+          <Key>
+            <PropertyRef Name="MachineConfigID" />
+          </Key>
+          <Property Name="MachineConfigID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="HW_Version" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WHCK_Version" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Windows_Build_Num" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PackageID" />
+          </Key>
+          <Property Name="PackageID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ConfigNumID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Checksum" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date_Uploaded" Type="datetime" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TestResult_Summary" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project_Group">
+          <Key>
+            <PropertyRef Name="Project_GroupID" />
+          </Key>
+          <Property Name="Project_GroupID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="ConfigNumID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Result">
+          <Key>
+            <PropertyRef Name="ResultID" />
+          </Key>
+          <Property Name="ResultID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" Nullable="false" MaxLength="1000" />
+          <Property Name="PackageID" Type="int" Nullable="false" />
+          <Property Name="BugID" Type="int" Nullable="false" />
+          <Property Name="TestCaseID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Test_Config">
+          <Key>
+            <PropertyRef Name="ConfigNumID" />
+          </Key>
+          <Property Name="ConfigNumID" Type="int" Nullable="false" />
+          <Property Name="MachineConfigID" Type="int" Nullable="false" />
+          <Property Name="DriverConfigID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestCase">
+          <Key>
+            <PropertyRef Name="TestCaseID" />
+          </Key>
+          <Property Name="TestCaseID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="ComponentID" Type="int" Nullable="false" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Component_Project_Group">
+          <End Role="Project_Group" Type="whckwebModel.Store.Project_Group" Multiplicity="1" />
+          <End Role="Component" Type="whckwebModel.Store.Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Group">
+              <PropertyRef Name="Project_GroupID" />
+            </Principal>
+            <Dependent Role="Component">
+              <PropertyRef Name="Project_GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_Login">
+          <End Role="Login" Type="whckwebModel.Store.Login" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Package" Type="whckwebModel.Store.Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_Test_Config">
+          <End Role="Test_Config" Type="whckwebModel.Store.Test_Config" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Package" Type="whckwebModel.Store.Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test_Config">
+              <PropertyRef Name="ConfigNumID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="ConfigNumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Group_Test_Config">
+          <End Role="Test_Config" Type="whckwebModel.Store.Test_Config" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Project_Group" Type="whckwebModel.Store.Project_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test_Config">
+              <PropertyRef Name="ConfigNumID" />
+            </Principal>
+            <Dependent Role="Project_Group">
+              <PropertyRef Name="ConfigNumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_Bug">
+          <End Role="Bug" Type="whckwebModel.Store.Bug" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Result" Type="whckwebModel.Store.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bug">
+              <PropertyRef Name="BugID" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="BugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_Package">
+          <End Role="Package" Type="whckwebModel.Store.Package" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Result" Type="whckwebModel.Store.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="PackageID" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_TestCase">
+          <End Role="TestCase" Type="whckwebModel.Store.TestCase" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Result" Type="whckwebModel.Store.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestCase">
+              <PropertyRef Name="TestCaseID" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="TestCaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Config_Driver_Config">
+          <End Role="Driver_Config" Type="whckwebModel.Store.Driver_Config" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Test_Config" Type="whckwebModel.Store.Test_Config" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver_Config">
+              <PropertyRef Name="DriverConfigID" />
+            </Principal>
+            <Dependent Role="Test_Config">
+              <PropertyRef Name="DriverConfigID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Config_Machine_Config">
+          <End Role="Machine_Config" Type="whckwebModel.Store.Machine_Config" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Test_Config" Type="whckwebModel.Store.Test_Config" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine_Config">
+              <PropertyRef Name="MachineConfigID" />
+            </Principal>
+            <Dependent Role="Test_Config">
+              <PropertyRef Name="MachineConfigID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestCase_Component">
+          <End Role="Component" Type="whckwebModel.Store.Component" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestCase" Type="whckwebModel.Store.TestCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Component">
+              <PropertyRef Name="ComponentID" />
+            </Principal>
+            <Dependent Role="TestCase">
+              <PropertyRef Name="ComponentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tsiewhckweb.Models" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="tsiewhckwebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bugs" EntityType="tsiewhckweb.Models.Bug" />
+          <EntitySet Name="Components" EntityType="tsiewhckweb.Models.Component" />
+          <EntitySet Name="Driver_Config" EntityType="tsiewhckweb.Models.Driver_Config" />
+          <EntitySet Name="Logins" EntityType="tsiewhckweb.Models.Login" />
+          <EntitySet Name="Machine_Config" EntityType="tsiewhckweb.Models.Machine_Config" />
+          <EntitySet Name="Packages" EntityType="tsiewhckweb.Models.Package" />
+          <EntitySet Name="Project_Group" EntityType="tsiewhckweb.Models.Project_Group" />
+          <EntitySet Name="Results" EntityType="tsiewhckweb.Models.Result" />
+          <EntitySet Name="Test_Config" EntityType="tsiewhckweb.Models.Test_Config" />
+          <EntitySet Name="TestCases" EntityType="tsiewhckweb.Models.TestCase" />
+          <AssociationSet Name="FK_Result_Bug" Association="tsiewhckweb.Models.FK_Result_Bug">
+            <End Role="Bug" EntitySet="Bugs" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Component_Project_Group" Association="tsiewhckweb.Models.FK_Component_Project_Group">
+            <End Role="Project_Group" EntitySet="Project_Group" />
+            <End Role="Component" EntitySet="Components" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestCase_Component" Association="tsiewhckweb.Models.FK_TestCase_Component">
+            <End Role="Component" EntitySet="Components" />
+            <End Role="TestCase" EntitySet="TestCases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Config_Driver_Config" Association="tsiewhckweb.Models.FK_Test_Config_Driver_Config">
+            <End Role="Driver_Config" EntitySet="Driver_Config" />
+            <End Role="Test_Config" EntitySet="Test_Config" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_Login" Association="tsiewhckweb.Models.FK_Package_Login">
+            <End Role="Login" EntitySet="Logins" />
+            <End Role="Package" EntitySet="Packages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Config_Machine_Config" Association="tsiewhckweb.Models.FK_Test_Config_Machine_Config">
+            <End Role="Machine_Config" EntitySet="Machine_Config" />
+            <End Role="Test_Config" EntitySet="Test_Config" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_Test_Config" Association="tsiewhckweb.Models.FK_Package_Test_Config">
+            <End Role="Test_Config" EntitySet="Test_Config" />
+            <End Role="Package" EntitySet="Packages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_Package" Association="tsiewhckweb.Models.FK_Result_Package">
+            <End Role="Package" EntitySet="Packages" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Group_Test_Config" Association="tsiewhckweb.Models.FK_Project_Group_Test_Config">
+            <End Role="Test_Config" EntitySet="Test_Config" />
+            <End Role="Project_Group" EntitySet="Project_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_TestCase" Association="tsiewhckweb.Models.FK_Result_TestCase">
+            <End Role="TestCase" EntitySet="TestCases" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Bug">
+          <Key>
+            <PropertyRef Name="BugID" />
+          </Key>
+          <Property Name="BugID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HSD" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CSP" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="WINQUAL" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="MANAGEPRO" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Results" Relationship="tsiewhckweb.Models.FK_Result_Bug" FromRole="Bug" ToRole="Result" />
+        </EntityType>
+        <EntityType Name="Component">
+          <Key>
+            <PropertyRef Name="ComponentID" />
+          </Key>
+          <Property Name="ComponentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Project_GroupID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Project_Group" Relationship="tsiewhckweb.Models.FK_Component_Project_Group" FromRole="Component" ToRole="Project_Group" />
+          <NavigationProperty Name="TestCases" Relationship="tsiewhckweb.Models.FK_TestCase_Component" FromRole="Component" ToRole="TestCase" />
+        </EntityType>
+        <EntityType Name="Driver_Config">
+          <Key>
+            <PropertyRef Name="DriverConfigID" />
+          </Key>
+          <Property Name="DriverConfigID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Team" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="BKC_Version" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SoftAP" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="BT_Driver" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="WiFi_Driver" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="NFC_Driver" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="GPS_Driver" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Test_Config" Relationship="tsiewhckweb.Models.FK_Test_Config_Driver_Config" FromRole="Driver_Config" ToRole="Test_Config" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDsid" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Last_AccessTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EAM_role" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="CDIS_email" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Packages" Relationship="tsiewhckweb.Models.FK_Package_Login" FromRole="Login" ToRole="Package" />
+        </EntityType>
+        <EntityType Name="Machine_Config">
+          <Key>
+            <PropertyRef Name="MachineConfigID" />
+          </Key>
+          <Property Name="MachineConfigID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HW_Version" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="WHCK_Version" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Windows_Build_Num" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Test_Config" Relationship="tsiewhckweb.Models.FK_Test_Config_Machine_Config" FromRole="Machine_Config" ToRole="Test_Config" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PackageID" />
+          </Key>
+          <Property Name="PackageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConfigNumID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Checksum" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Date_Uploaded" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Path" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TestResult_Summary" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Login" Relationship="tsiewhckweb.Models.FK_Package_Login" FromRole="Package" ToRole="Login" />
+          <NavigationProperty Name="Test_Config" Relationship="tsiewhckweb.Models.FK_Package_Test_Config" FromRole="Package" ToRole="Test_Config" />
+          <NavigationProperty Name="Results" Relationship="tsiewhckweb.Models.FK_Result_Package" FromRole="Package" ToRole="Result" />
+        </EntityType>
+        <EntityType Name="Project_Group">
+          <Key>
+            <PropertyRef Name="Project_GroupID" />
+          </Key>
+          <Property Name="Project_GroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="ConfigNumID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Components" Relationship="tsiewhckweb.Models.FK_Component_Project_Group" FromRole="Project_Group" ToRole="Component" />
+          <NavigationProperty Name="Test_Config" Relationship="tsiewhckweb.Models.FK_Project_Group_Test_Config" FromRole="Project_Group" ToRole="Test_Config" />
+        </EntityType>
+        <EntityType Name="Result">
+          <Key>
+            <PropertyRef Name="ResultID" />
+          </Key>
+          <Property Name="ResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="PackageID" Type="Int32" Nullable="false" />
+          <Property Name="BugID" Type="Int32" Nullable="false" />
+          <Property Name="TestCaseID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bug" Relationship="tsiewhckweb.Models.FK_Result_Bug" FromRole="Result" ToRole="Bug" />
+          <NavigationProperty Name="Package" Relationship="tsiewhckweb.Models.FK_Result_Package" FromRole="Result" ToRole="Package" />
+          <NavigationProperty Name="TestCase" Relationship="tsiewhckweb.Models.FK_Result_TestCase" FromRole="Result" ToRole="TestCase" />
+        </EntityType>
+        <EntityType Name="Test_Config">
+          <Key>
+            <PropertyRef Name="ConfigNumID" />
+          </Key>
+          <Property Name="ConfigNumID" Type="Int32" Nullable="false" />
+          <Property Name="MachineConfigID" Type="Int32" Nullable="false" />
+          <Property Name="DriverConfigID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Driver_Config" Relationship="tsiewhckweb.Models.FK_Test_Config_Driver_Config" FromRole="Test_Config" ToRole="Driver_Config" />
+          <NavigationProperty Name="Machine_Config" Relationship="tsiewhckweb.Models.FK_Test_Config_Machine_Config" FromRole="Test_Config" ToRole="Machine_Config" />
+          <NavigationProperty Name="Packages" Relationship="tsiewhckweb.Models.FK_Package_Test_Config" FromRole="Test_Config" ToRole="Package" />
+          <NavigationProperty Name="Project_Group" Relationship="tsiewhckweb.Models.FK_Project_Group_Test_Config" FromRole="Test_Config" ToRole="Project_Group" />
+        </EntityType>
+        <EntityType Name="TestCase">
+          <Key>
+            <PropertyRef Name="TestCaseID" />
+          </Key>
+          <Property Name="TestCaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="ComponentID" Type="Int32" Nullable="false" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Component" Relationship="tsiewhckweb.Models.FK_TestCase_Component" FromRole="TestCase" ToRole="Component" />
+          <NavigationProperty Name="Results" Relationship="tsiewhckweb.Models.FK_Result_TestCase" FromRole="TestCase" ToRole="Result" />
+        </EntityType>
+        <Association Name="FK_Result_Bug">
+          <End Role="Bug" Type="tsiewhckweb.Models.Bug" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Result" Type="tsiewhckweb.Models.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bug">
+              <PropertyRef Name="BugID" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="BugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Component_Project_Group">
+          <End Role="Project_Group" Type="tsiewhckweb.Models.Project_Group" Multiplicity="1" />
+          <End Role="Component" Type="tsiewhckweb.Models.Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Group">
+              <PropertyRef Name="Project_GroupID" />
+            </Principal>
+            <Dependent Role="Component">
+              <PropertyRef Name="Project_GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestCase_Component">
+          <End Role="Component" Type="tsiewhckweb.Models.Component" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestCase" Type="tsiewhckweb.Models.TestCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Component">
+              <PropertyRef Name="ComponentID" />
+            </Principal>
+            <Dependent Role="TestCase">
+              <PropertyRef Name="ComponentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Config_Driver_Config">
+          <End Role="Driver_Config" Type="tsiewhckweb.Models.Driver_Config" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Test_Config" Type="tsiewhckweb.Models.Test_Config" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver_Config">
+              <PropertyRef Name="DriverConfigID" />
+            </Principal>
+            <Dependent Role="Test_Config">
+              <PropertyRef Name="DriverConfigID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_Login">
+          <End Role="Login" Type="tsiewhckweb.Models.Login" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Package" Type="tsiewhckweb.Models.Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Config_Machine_Config">
+          <End Role="Machine_Config" Type="tsiewhckweb.Models.Machine_Config" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Test_Config" Type="tsiewhckweb.Models.Test_Config" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine_Config">
+              <PropertyRef Name="MachineConfigID" />
+            </Principal>
+            <Dependent Role="Test_Config">
+              <PropertyRef Name="MachineConfigID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_Test_Config">
+          <End Role="Test_Config" Type="tsiewhckweb.Models.Test_Config" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Package" Type="tsiewhckweb.Models.Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test_Config">
+              <PropertyRef Name="ConfigNumID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="ConfigNumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_Package">
+          <End Role="Package" Type="tsiewhckweb.Models.Package" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Result" Type="tsiewhckweb.Models.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="PackageID" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Group_Test_Config">
+          <End Role="Test_Config" Type="tsiewhckweb.Models.Test_Config" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Project_Group" Type="tsiewhckweb.Models.Project_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test_Config">
+              <PropertyRef Name="ConfigNumID" />
+            </Principal>
+            <Dependent Role="Project_Group">
+              <PropertyRef Name="ConfigNumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_TestCase">
+          <End Role="TestCase" Type="tsiewhckweb.Models.TestCase" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Result" Type="tsiewhckweb.Models.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestCase">
+              <PropertyRef Name="TestCaseID" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="TestCaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="whckwebModelStoreContainer" CdmEntityContainer="tsiewhckwebEntities">
+          <EntitySetMapping Name="Bugs">
+            <EntityTypeMapping TypeName="tsiewhckweb.Models.Bug">
+              <MappingFragment StoreEntitySet="Bug">
+                <ScalarProperty Name="BugID" ColumnName="BugID" />
+                <ScalarProperty Name="HSD" ColumnName="HSD" />
+                <ScalarProperty Name="CSP" ColumnName="CSP" />
+                <ScalarProperty Name="WINQUAL" ColumnName="WINQUAL" />
+                <ScalarProperty Name="MANAGEPRO" ColumnName="MANAGEPRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Components">
+            <EntityTypeMapping TypeName="tsiewhckweb.Models.Component">
+              <MappingFragment StoreEntitySet="Component">
+                <ScalarProperty Name="ComponentID" ColumnName="ComponentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Project_GroupID" ColumnName="Project_GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Driver_Config">
+            <EntityTypeMapping TypeName="tsiewhckweb.Models.Driver_Config">
+              <MappingFragment StoreEntitySet="Driver_Config">
+                <ScalarProperty Name="DriverConfigID" ColumnName="DriverConfigID" />
+                <ScalarProperty Name="Team" ColumnName="Team" />
+                <ScalarProperty Name="BKC_Version" ColumnName="BKC_Version" />
+                <ScalarProperty Name="SoftAP" ColumnName="SoftAP" />
+                <ScalarProperty Name="BT_Driver" ColumnName="BT_Driver" />
+                <ScalarProperty Name="WiFi_Driver" ColumnName="WiFi_Driver" />
+                <ScalarProperty Name="NFC_Driver" ColumnName="NFC_Driver" />
+                <ScalarProperty Name="GPS_Driver" ColumnName="GPS_Driver" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="tsiewhckweb.Models.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="IDsid" ColumnName="IDsid" />
+                <ScalarProperty Name="Last_AccessTime" ColumnName="Last_AccessTime" />
+                <ScalarProperty Name="EAM_role" ColumnName="EAM_role" />
+                <ScalarProperty Name="CDIS_email" ColumnName="CDIS_email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Machine_Config">
+            <EntityTypeMapping TypeName="tsiewhckweb.Models.Machine_Config">
+              <MappingFragment StoreEntitySet="Machine_Config">
+                <ScalarProperty Name="MachineConfigID" ColumnName="MachineConfigID" />
+                <ScalarProperty Name="HW_Version" ColumnName="HW_Version" />
+                <ScalarProperty Name="WHCK_Version" ColumnName="WHCK_Version" />
+                <ScalarProperty Name="Windows_Build_Num" ColumnName="Windows_Build_Num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packages">
+            <EntityTypeMapping TypeName="tsiewhckweb.Models.Package">
+              <MappingFragment StoreEntitySet="Package">
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="ConfigNumID" ColumnName="ConfigNumID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Checksum" ColumnName="Checksum" />
+                <ScalarProperty Name="Date_Uploaded" ColumnName="Date_Uploaded" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="TestResult_Summary" ColumnName="TestResult_Summary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project_Group">
+            <EntityTypeMapping TypeName="tsiewhckweb.Models.Project_Group">
+              <MappingFragment StoreEntitySet="Project_Group">
+                <ScalarProperty Name="Project_GroupID" ColumnName="Project_GroupID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ConfigNumID" ColumnName="ConfigNumID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Results">
+            <EntityTypeMapping TypeName="tsiewhckweb.Models.Result">
+              <MappingFragment StoreEntitySet="Result">
+                <ScalarProperty Name="ResultID" ColumnName="ResultID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="BugID" ColumnName="BugID" />
+                <ScalarProperty Name="TestCaseID" ColumnName="TestCaseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Test_Config">
+            <EntityTypeMapping TypeName="tsiewhckweb.Models.Test_Config">
+              <MappingFragment StoreEntitySet="Test_Config">
+                <ScalarProperty Name="ConfigNumID" ColumnName="ConfigNumID" />
+                <ScalarProperty Name="MachineConfigID" ColumnName="MachineConfigID" />
+                <ScalarProperty Name="DriverConfigID" ColumnName="DriverConfigID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestCases">
+            <EntityTypeMapping TypeName="tsiewhckweb.Models.TestCase">
+              <MappingFragment StoreEntitySet="TestCase">
+                <ScalarProperty Name="TestCaseID" ColumnName="TestCaseID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ComponentID" ColumnName="ComponentID" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

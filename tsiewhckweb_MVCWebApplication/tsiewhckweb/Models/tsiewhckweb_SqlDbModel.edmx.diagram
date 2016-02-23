@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ba8e26b276964a4eb9d8c6d9c544f150" Name="Diagram1">
+        <EntityTypeShape EntityType="tsiewhckweb.Models.Bug" Width="1.5" PointX="7.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tsiewhckweb.Models.Component" Width="1.5" PointX="5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="tsiewhckweb.Models.Driver_Config" Width="1.5" PointX="0.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tsiewhckweb.Models.Login" Width="1.5" PointX="5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tsiewhckweb.Models.Machine_Config" Width="1.5" PointX="2.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tsiewhckweb.Models.Package" Width="1.5" PointX="5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="tsiewhckweb.Models.Project_Group" Width="1.5" PointX="2.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="tsiewhckweb.Models.Result" Width="1.5" PointX="7.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="tsiewhckweb.Models.Test_Config" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tsiewhckweb.Models.TestCase" Width="1.5" PointX="7.25" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="tsiewhckweb.Models.FK_Result_Bug" ManuallyRouted="false" />
+        <AssociationConnector Association="tsiewhckweb.Models.FK_Component_Project_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="tsiewhckweb.Models.FK_TestCase_Component" ManuallyRouted="false" />
+        <AssociationConnector Association="tsiewhckweb.Models.FK_Test_Config_Driver_Config" ManuallyRouted="false" />
+        <AssociationConnector Association="tsiewhckweb.Models.FK_Package_Login" ManuallyRouted="false" />
+        <AssociationConnector Association="tsiewhckweb.Models.FK_Test_Config_Machine_Config" ManuallyRouted="false" />
+        <AssociationConnector Association="tsiewhckweb.Models.FK_Package_Test_Config" ManuallyRouted="false" />
+        <AssociationConnector Association="tsiewhckweb.Models.FK_Result_Package" ManuallyRouted="false" />
+        <AssociationConnector Association="tsiewhckweb.Models.FK_Project_Group_Test_Config" ManuallyRouted="false" />
+        <AssociationConnector Association="tsiewhckweb.Models.FK_Result_TestCase" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

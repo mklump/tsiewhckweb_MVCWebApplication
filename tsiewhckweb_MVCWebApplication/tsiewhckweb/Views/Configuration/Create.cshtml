@@ -1,0 +1,150 @@
+﻿@model tsiewhckweb.Models.Project_Group
+
+@{
+    ViewBag.Title = "Create package configuration and result summary entry.";
+    ViewBag.Message = "Please follow the instructions on this Page as shown.";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+    <br />
+    <h3>@ViewBag.Message</h3>
+    <br />
+    <h3>Step 1: Browse to a test result package .hckx extention file, and click submit query.</h3>
+    <div>@Html.Raw( Html.Encode( @ViewBag.TestResult ).Replace("&#10;", "<br />") )</div>
+</hgroup>
+
+<form action="GetResults" method="post" enctype="multipart/form-data">
+  
+  <label for="file">Filename:</label>
+  <input type="file" name="file" id="file" runat="server" formmethod="post" />
+
+  <input type="submit" />
+</form>
+<br /><br />
+<h3>Step 2: Fill out the configuration for this test result package, and click submit at the bottom.</h3>
+<br />
+Fields currently required: Project Group, Config #, HW Version, WHCK Version, Windows Build #, BKC Version.
+<br />
+Fields currently optional: Team, SoftAP, BT Driver, WiFi Driver, NFC Driver, GPS Driver.
+@using( Html.BeginForm() ) 
+{
+    @Html.ValidationSummary( false, "Submit was unsuccessful.\n(*) All fields are required.\nPlease correct the errors and try again." )
+
+    <fieldset>
+        <legend>Project_Group</legend>
+
+        <div class="editor-label">
+            @Html.Raw( "Project Group" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtProjectGroup", ( null != Model ) ?
+                Model.Name.ToString() : string.Empty, new { @runat="server" } )
+            @Html.ValidationMessage( "txtProjectGroup", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "Config #" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtConfigNumID", ( null != Model ) ?
+                Model.Test_Config.ConfigNumID.ToString() : string.Empty, new { @runat="server" } )
+            @Html.ValidationMessage( "txtConfigNumID", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "Team" )
+        </div>
+        <div class="editor-field" >
+            @Html.TextBox( "txtTeam", ( null != Model ) ?
+                Model.Test_Config.Driver_Config.Team : string.Empty, new { @runat="server" } )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "HW Version" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtHW_Version", ( null != Model ) ?
+                Model.Test_Config.Machine_Config.HW_Version : string.Empty, new { @runat="server" } )
+            @Html.ValidationMessage( "txtHW_Version", "*" )
+        </div>
+
+         <div class="editor-label">
+            @Html.Raw( "WHCK Version" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtWHCK_Version", ( null != Model ) ?
+                Model.Test_Config.Machine_Config.WHCK_Version : string.Empty, new { @runat="server" } )
+            @Html.ValidationMessage( "txtWHCK_Version", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "Windows Build #" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtWindows_Build_Num", ( null != Model ) ?
+                Model.Test_Config.Machine_Config.Windows_Build_Num : string.Empty, new { @runat="server" } )
+            @Html.ValidationMessage( "txtWindows_Build_Num", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "BKC Version" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtBKC_Version", ( null != Model ) ?
+                Model.Test_Config.Driver_Config.BKC_Version : string.Empty, new { @runat="server" } )
+            @Html.ValidationMessage( "txtBKC_Version", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "SoftAP" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtSoftAP", ( null != Model ) ?
+                Model.Test_Config.Driver_Config.SoftAP : string.Empty, new { @runat="server" } )
+        </div>
+
+         <div class="editor-label">
+            @Html.Raw( "BT Driver" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtBT_Driver", ( null != Model ) ?
+                Model.Test_Config.Driver_Config.BT_Driver : string.Empty, new { @runat="server" } )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "WiFi Driver" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtWiFi_Driver", ( null != Model ) ?
+                Model.Test_Config.Driver_Config.WiFi_Driver : string.Empty, new { @runat="server" } )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "NFC Driver" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtNFC_Driver", ( null != Model ) ?
+                Model.Test_Config.Driver_Config.NFC_Driver : string.Empty, new { @runat="server" } )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "GPS Driver" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtGPS_Driver", ( null != Model ) ?
+                Model.Test_Config.Driver_Config.GPS_Driver : string.Empty, new { @runat="server" } )
+        </div>
+        <p>
+            <input type="submit" value="Submit" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

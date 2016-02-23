@@ -1,0 +1,101 @@
+﻿@model IEnumerable<tsiewhckweb.Models.Project_Group>
+
+@{
+    ViewBag.Title = "Index of Configuration/BCK Entries";
+}
+
+<h2>Index of Configuration/BCK Entries</h2>
+
+@using MVCControlsToolkit.Controls;
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.Raw( "Project Group" )
+        </th>
+        <th>
+            @Html.Raw( "Config #" )
+        </th>
+        <th>
+            @Html.Raw( "Team" )
+        </th>
+        <th>
+            @Html.Raw( "HW Version" )
+        </th>
+        <th>
+            @Html.Raw( "WHCK Version" )
+        </th>
+        <th>
+            @Html.Raw( "Windows Build #" )
+        </th>
+        <th>
+            @Html.Raw( "BKC Version" )
+        </th>
+        <th>
+            @Html.Raw( "SoftAP" )
+        </th>
+        <th>
+            @Html.Raw( "BT Driver" )
+        </th>
+        <th>
+            @Html.Raw( "WiFi Driver" )
+        </th>
+        <th>
+            @Html.Raw( "NFC Driver" )
+        </th>
+        <th>
+            @Html.Raw( "GPS Driver" )
+        </th>
+        <th></th>
+    </tr>
+
+@foreach( var table in Model )
+{
+    <tr>
+        <td>
+            @Html.DisplayFor( modelItem => table.Name )
+        </td>
+        <td>
+            @Html.DisplayFor( modelItem => table.Test_Config.ConfigNumID )
+        </td>
+        <td>
+            @Html.DisplayFor( modelItem => table.Test_Config.Driver_Config.Team )
+        </td>
+        <td>
+            @Html.DisplayFor( modelItem => table.Test_Config.Machine_Config.HW_Version )
+        </td>
+        <td>
+            @Html.DisplayFor( modelItem => table.Test_Config.Machine_Config.WHCK_Version )
+        </td>
+        <td>
+            @Html.DisplayFor( modelItem => table.Test_Config.Machine_Config.Windows_Build_Num )
+        </td>
+        <td>
+            @Html.DisplayFor( modelItem => table.Test_Config.Driver_Config.BKC_Version )
+        </td>
+         <td>
+            @Html.DisplayFor( modelItem => table.Test_Config.Driver_Config.SoftAP )
+        </td>
+        <td>
+            @Html.DisplayFor( modelItem => table.Test_Config.Driver_Config.BT_Driver )
+        </td>
+        <td>
+            @Html.DisplayFor( modelItem => table.Test_Config.Driver_Config.WiFi_Driver )
+        </td>
+        <td>
+            @Html.DisplayFor( modelItem => table.Test_Config.Driver_Config.NFC_Driver )
+        </td>
+        <td>
+            @Html.DisplayFor( modelItem => table.Test_Config.Driver_Config.GPS_Driver )
+        </td>
+        <td>
+            @* @Html.ActionLink( "Edit", "Edit", new { id = table.ConfigNumID } ) | *@
+            @Html.ActionLink( "Details", "Details", new { id = table.ConfigNumID } ) |
+            @Html.ActionLink( "Delete", "Delete", new { id = table.ConfigNumID } )
+        </td>
+    </tr>
+}
+</table>

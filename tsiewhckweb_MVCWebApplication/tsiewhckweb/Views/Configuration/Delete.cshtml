@@ -1,0 +1,109 @@
+﻿@model tsiewhckweb.Models.Project_Group
+
+@{
+    ViewBag.Title = "Delete a package configuration result summary entry.";
+    ViewBag.Message = "Delete is permanent after clicking Delete.";
+}
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+    <br />
+    <h3>@ViewBag.Message</h3>
+    <br />
+    <h3>Are you sure you want to delete this?</h3>
+</hgroup>
+
+<fieldset>
+    <legend>Test_Config</legend>
+
+    <div class="display-label">
+         @Html.Raw( "Project Group" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Name )
+    </div>
+
+    <div class="display-label">
+         @Html.Raw( "Config #" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Test_Config.ConfigNumID )
+    </div>
+
+    <div class="display-label">
+         @Html.Raw( "Team" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Test_Config.Driver_Config.Team )
+    </div>
+
+    <div class="display-label">
+         @Html.Raw( "HW Version" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Test_Config.Machine_Config.HW_Version )
+    </div>
+
+    <div class="display-label">
+         @Html.Raw( "WHCK Version" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Test_Config.Machine_Config.WHCK_Version )
+    </div>
+
+    <div class="display-label">
+         @Html.Raw( "Windows Build #" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Test_Config.Machine_Config.Windows_Build_Num )
+    </div>
+
+    <div class="display-label">
+         @Html.Raw( "BKC Version" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Test_Config.Driver_Config.BKC_Version )
+    </div>
+
+        <div class="display-label">
+         @Html.Raw( "SoftAP" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Test_Config.Driver_Config.SoftAP )
+    </div>
+
+    <div class="display-label">
+         @Html.Raw( "BT Driver" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Test_Config.Driver_Config.BT_Driver )
+    </div>
+
+        <div class="display-label">
+         @Html.Raw( "WiFi Driver" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Test_Config.Driver_Config.WiFi_Driver )
+    </div>
+
+    <div class="display-label">
+         @Html.Raw( "NFC Driver" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Test_Config.Driver_Config.NFC_Driver )
+    </div>
+
+    <div class="display-label">
+         @Html.Raw( "GPS Driver" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Test_Config.Driver_Config.GPS_Driver )
+    </div>
+
+</fieldset>
+@using( Html.BeginForm() )
+{
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

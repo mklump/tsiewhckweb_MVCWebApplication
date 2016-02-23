@@ -1,0 +1,129 @@
+﻿@model tsiewhckweb.Models.Project_Group
+
+@{
+    ViewBag.Title = "Details of package configuration with each result detail entry.";
+}
+
+<h2>Details of package configuration with each result detail entry.</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.Raw( "TestCase Name" )
+        </th>
+        <th>
+            @Html.Raw( "TestCase TimeStamp" )
+        </th>
+        <th>
+            @Html.Raw( "Component Name" )
+        </th>
+        <th>
+            @Html.Raw( "Package Name" )
+        </th>
+        <th>
+            @Html.Raw( "Result Status" )
+        </th>
+        <th>
+            @Html.Raw( "Result Comment" )
+        </th>
+    </tr>
+
+@foreach( var table in Model.Test_Config.Packages )
+{
+    foreach( var testResult in table.Results )
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor( modelItem => testResult.TestCase.Name )
+            </td>
+            <td>
+                @Html.DisplayFor( modelItem => testResult.TestCase.TimeStamp )
+            </td>
+            <td>
+                @Html.DisplayFor( modelItem => table.FileName )
+            </td>
+            <td>
+                @Html.DisplayFor( modelItem => testResult.Status )
+            </td>
+            <td>
+                @Html.DisplayFor( modelItem => testResult.Comment )
+            </td>
+        </tr>
+    }
+}
+</table>
+
+@*<fieldset>
+    <legend>Project_Group</legend>
+@foreach( var testResult in Model.Test_Config.Packages )
+{
+    <div class="display-label">
+         @Html.Raw( "Project Group" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Name )
+    </div>
+    
+    <div class="display-label">
+         @Html.Raw( "Config #" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( modelItem => testResult.Test_Config.ConfigNumID )
+    </div>
+
+    <div class="display-label">
+         @Html.Raw( "IDsid" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( modelItem => testResult.Login.IDsid )
+    </div>
+    
+    <div class="display-label">
+         @Html.Raw( "Last AccessTime" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( modelItem => testResult.Login.Last_AccessTime )
+    </div>
+    
+    <div class="display-label">
+         @Html.Raw( "Checksum" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( modelItem => testResult.Checksum )
+    </div>
+    
+    <div class="display-label">
+         @Html.Raw( "Date Uploaded" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( modelItem => testResult.Date_Uploaded )
+    </div>
+    
+    <div class="display-label">
+         @Html.Raw( "File Name" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( modelItem => testResult.FileName )
+    </div>
+    
+    <div class="display-label">
+         @Html.Raw( "Path" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( modelItem => testResult.Path )
+    </div>
+    
+    <div class="display-label">
+         @Html.Raw( "TestResult Summary" )
+    </div>
+    <div class="display-field">
+        @Html.Raw( Html.Encode( testResult.TestResult_Summary ).Replace("&#10;", "<br />") )
+    </div>
+    break;
+}
+</fieldset>*@
+
+<p>
+    @* @Html.ActionLink("Edit", "Edit", new { id=Model.ConfigNumID }) | *@
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,43 @@
+﻿@model tsiewhckweb.Models.TestCase
+
+@{
+    ViewBag.Title = "Details of Testcase by Project and Component";
+}
+
+<h2>Details of Testcase by Project and Component</h2>
+
+<fieldset>
+    <legend>TestCase</legend>
+
+    <div class="display-label">
+         @Html.Raw( "Project Name" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Component.Project_Group.Name )
+    </div>
+
+    <div class="display-label">
+         @Html.Raw( "TestCase Name" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Name )
+    </div>
+
+        <div class="display-label">
+         @Html.Raw( "TestCase TimeStamp" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.TimeStamp )
+    </div>
+
+    <div class="display-label">
+         @Html.Raw( "Component Name" )
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor( model => model.Component.Name )
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TestCaseID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

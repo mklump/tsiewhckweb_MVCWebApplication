@@ -1,0 +1,51 @@
+﻿@model IEnumerable<tsiewhckweb.Models.TestCase>
+
+@{
+    ViewBag.Title = "Index of Testcase by Project and Component";
+}
+
+<h2>Index of Testcase by Project and Component</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.Raw( "Project Name" )
+        </th>
+        <th>
+            @Html.Raw( "TestCase Name" )
+        </th>
+        <th>
+            @Html.Raw( "TestCase TimeStamp" )
+        </th>
+        <th>
+            @Html.Raw( "Component Name" )
+        </th>
+    </tr>
+
+@foreach( var item in Model )
+{
+    <tr>
+        <td>
+            @Html.DisplayFor( modelItem => item.Component.Project_Group.Name )
+        </td>
+        <td>
+            @Html.DisplayFor( modelItem => item.Name )
+        </td>
+        <td>
+            @Html.DisplayFor( modelItem => item.TimeStamp )
+        </td>
+        <td>
+            @Html.DisplayFor( modelItem => item.Component.Name )
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TestCaseID } ) |
+            @Html.ActionLink("Details", "Details", new { id=item.TestCaseID } ) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TestCaseID } )
+        </td>
+    </tr>
+}
+
+</table>

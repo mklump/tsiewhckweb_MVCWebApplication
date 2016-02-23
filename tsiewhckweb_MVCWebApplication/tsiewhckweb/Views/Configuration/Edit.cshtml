@@ -1,0 +1,131 @@
+﻿@model tsiewhckweb.Models.Project_Group
+
+@{
+    ViewBag.Title = "Edit a package configuration result summary entry.";
+    ViewBag.Message = "Please follow the instructions on this Page as shown.";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+    <br />
+    <h3>@ViewBag.Message</h3>
+    <br />
+    <h3>Edit this configuration for this test result package .hckx extention file, and click Save.</h3>
+</hgroup>
+
+@using( Html.BeginForm() )
+{
+    @Html.ValidationSummary( false, "Submit was unsuccessful.\n(*) All fields are required.\nPlease correct the errors and try again." )
+
+    <fieldset>
+        <legend>Test_Config</legend>
+
+        <div class="editor-label">
+            @Html.Raw( "Project Group" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtProjectGroup", Model.Name, new { @runat="server" } )
+            @Html.ValidationMessage( "txtProjectGroup", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "Config #" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtConfigNumID", Model.Test_Config.ConfigNumID, new { @runat="server" } )
+            @Html.ValidationMessage( "txtConfigNumID", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "Team" )
+        </div>
+        <div class="editor-field" >
+            @Html.TextBox( "txtTeam", Model.Test_Config.Driver_Config.Team, new { @runat="server" } )
+            @Html.ValidationMessage( "txtTeam", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "HW Version" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtHW_Version", Model.Test_Config.Machine_Config.HW_Version, new { @runat="server" } )
+            @Html.ValidationMessage( "txtHW_Version", "*" )
+        </div>
+
+         <div class="editor-label">
+            @Html.Raw( "WHCK Version" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtWHCK_Version", Model.Test_Config.Machine_Config.WHCK_Version, new { @runat="server" } )
+            @Html.ValidationMessage( "txtWHCK_Version", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "Windows Build #" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtWindows_Build_Num", Model.Test_Config.Machine_Config.Windows_Build_Num, new { @runat="server" } )
+            @Html.ValidationMessage( "txtWindows_Build_Num", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "BKC Version" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtBKC_Version", Model.Test_Config.Driver_Config.BKC_Version, new { @runat="server" } )
+            @Html.ValidationMessage( "txtBKC_Version", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "SoftAP" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtSoftAP", Model.Test_Config.Driver_Config.SoftAP, new { @runat="server" } )
+            @Html.ValidationMessage( "txtSoftAP", "*" )
+        </div>
+
+         <div class="editor-label">
+            @Html.Raw( "BT Driver" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtBT_Driver", Model.Test_Config.Driver_Config.BT_Driver, new { @runat="server" } )
+            @Html.ValidationMessage( "txtBT_Driver", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "WiFi Driver" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtWiFi_Driver", Model.Test_Config.Driver_Config.WiFi_Driver, new { @runat="server" } )
+            @Html.ValidationMessage( "txtWiFi_Driver", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "NFC Driver" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtNFC_Driver", Model.Test_Config.Driver_Config.NFC_Driver, new { @runat="server" } )
+            @Html.ValidationMessage( "txtNFC_Driver", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "GPS Driver" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtGPS_Driver", Model.Test_Config.Driver_Config.GPS_Driver, new { @runat="server" } )
+            @Html.ValidationMessage( "txtGPS_Driver", "*" )
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

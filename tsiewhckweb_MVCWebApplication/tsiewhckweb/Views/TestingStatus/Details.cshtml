@@ -1,0 +1,29 @@
+﻿@model tsiewhckweb.Models.Project_Group
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Project_Group</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Test_Config.ConfigNumID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Test_Config.ConfigNumID)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Project_GroupID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

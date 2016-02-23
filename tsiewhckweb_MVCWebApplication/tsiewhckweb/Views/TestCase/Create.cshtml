@@ -1,0 +1,65 @@
+﻿@model tsiewhckweb.Models.TestCase
+
+@{
+    ViewBag.Title = "Create a Testcase by Project and Component";
+}
+
+<h2>Create a Testcase by Project and Component</h2>
+
+@using( Html.BeginForm() )
+{
+    @Html.ValidationSummary( false, "Submit was unsuccessful.\n(*) All fields are required.\nPlease correct the errors and try again." )
+
+    <fieldset>
+        <legend>TestCase</legend>
+
+        <div class="editor-label">
+            @Html.Raw( "Project Group" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtProjectName", ( null != Model ) ?
+                Model.Component.Project_Group.Name.ToString() : string.Empty, new { @runat="server" } )
+            @Html.ValidationMessage( "txtProjectName", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "TestCase Name" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtTestCaseName", ( null != Model ) ?
+                Model.Name.ToString() : string.Empty, new { @runat="server" } )
+            @Html.ValidationMessage( "txtTestCaseName", "*" )
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "TestCase TimeStamp" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtTestCaseTimeStamp", ( null != Model ) ?
+                Model.TimeStamp.ToString() : string.Empty, new { @runat="server" } )
+            @Html.ValidationMessage( "txtTestCaseTimeStamp", "*" )
+            Note: Leave blank for DateTime.Now, or enter present form as "yyyyMMddHHmm".
+        </div>
+
+        <div class="editor-label">
+            @Html.Raw( "Component Name" )
+        </div>
+        <div class="editor-field">
+            @Html.TextBox( "txtComponentName", ( null != Model ) ?
+                Model.Component.Name.ToString() : string.Empty, new { @runat="server" } )
+            @Html.ValidationMessage( "txtComponentName", "*" )
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,8 +1,10 @@
-# tsiewhckweb_MVCWebApplication
-Windows Driver Test Took Kit results reportin ASP.NET MVC4 web application and SQL backend
+• For this development and testing, I was made owner of delivering an ASP.NET MVC 4.0 test results reporting dashboard website for test results that were provided by Windows Hardware Certification Kit (WHCK) for Windows 8 for Test Result Management within the Tablet Software Integration Engineering work group at Intel.
+• The test results were given as a compiled .hckx archive that I parsed and reported through this custom website using database-first form of the Entity Framework to the SQL database that I designed including LINQ expression language, and C# code generation. 
+Environment: UML/Visio flow design, C# w/ .NET 4.0, ASP.NET MVC 4.0, XHTML, SQL database, Entity Framework, LINQ expression language, XML, RegEx regular expressions, and evolution of test case functional planning from one to many including corner cases and requirements validation. The tools used are Visual Studio Ultimate 2012, IIS 7.5, Windows Server 2008 R2, SQL Server 2012, and Perforce + Electric Commander source control.
 
-WHCK Web Beta v1.0
-Contents
+
+- WHCK Web Beta v1.0 Contents -
+
 Document Last Update:	1
 Contact Info:	1
 Tsiewhckweb TestResult Management Web Application – Version 1.0 Signoff Criteria (Beta Release v1.0)
@@ -17,11 +19,15 @@ Steps to Publish and Compile WHCK Web+Database	3
 
 Document Last Update:
 November 16th, 2012
+Contact Info:
+Manager: Solomon Kinard email: solomon.kinard@intel.com
+Test: Himanshu Pathak email: himanshux.pathak@intel.com
+Development/Test: Matthew James K email: mklump@gmail.com
 
-Development/Test: Matthew James Klump email: mklump@gmail.com
 
 Tsiewhckweb TestResult Management Web Application – Version 1.0 
-Signoff Criteria (Beta Release v1.0)
+Signoff Criteria (Beta Release v1.0):
+
 Apply the following minimum required fuctional test:
 1)	Step 1: Go to the officially designated web application hosting site.
 2)	Step 2: Add 3 to 10 Valid test cases using the TestCase management link from the Home page.
@@ -46,7 +52,10 @@ server “tsiewhckweb1”, and needs to be moved also from the test hosting server t
 server. This can be done be consulting SQL Books Online contents (http://msdn.microsoft.com/en-
 us/library/ms130214(v=sql.100).aspx) for deploying a new SQL Server instance and application 
 database.
+
+
 Steps to Install SQL Server:
+
 1)	Run SQL Setup and add “SQL Server Engine”, “Client Connectivity” for a network conntection, 
 “Integration Services” for the database transfer and backup tools, SQL Database Engine Server Core, 
 and also Management Tools Basic+.
@@ -77,7 +86,10 @@ and click next.
 18)	Still in the same window click again “Advanced settings”, and follow the prior steps 8) through 15), 
 and open the Windows Firewall to allow also connections to TCP port 1434 in addition to 1433, and 
 also name the Inbound Rule as “SQL Server Database Engine network connection”.
-Steps to Install IIS Web Server
+
+
+Steps to Install IIS Web Server:
+
 The application is presently being hosted using Microsoft IIS 7.5 web server. The application requires a 
 web server such as Apache or IIS web servers to functions. Instructions for installing IIS web server can 
 be found here -> (http://www.iis.net/learn/install/installing-iis-7/installing-iis-7-and-above-on-windows-
@@ -95,7 +107,9 @@ i)	In the section for “Enable 32-bit Applications”, please set that to TRUE, and
 j)	Follow step for deploying a new virtual directory, and then setting that virtual directory as a web 
 application. Instructions for doing this can be found here -> (http://msdn.microsoft.com/en-
 us/library/bb763173(v=vs.90).aspx). 
-Steps to Publish and Compile WHCK Web+Database
+
+
+Steps to Publish and Compile WHCK Web+Database:
 
 1)	Set a folder level network share (\\tsievauto1\whckweb) with write permissions sufficient for Visual 
 Studio tool publish function directly from the build.
@@ -181,24 +195,3 @@ set the “Build Action” of that file there to “Content” to not include that file 
 43)	Select the entry you see there as “Publish_to_tsievauto1(Production)”, and click “Publish”.
 44)	If rather lengthy steps were done in order, and you see no errors in Visual Studio error 
 window/output window, then the site published OKAY and is ready for testing with the user base!
-
-ConfigurationModel.cs codefile was written manually.
-ConfiguraitonModel.cs created separate DB tsiewhckwebDBs, ConfigurationControler.cs, and also Configuration/Create.cshtml, Configuration/Delete.cshtml, Configuration/details.cshtml, Configuration/Edit.cshtml, Configuration/Index.cshtml view files.
-
-tsiewhckwebDB (tsiewhckweb.Models) == Model Class for Add Control wizard
-tsiewhckwebDBContext (tsiewhckweb.Models) == Data Context Class for Add Control wizard
-
-Updates:
-10/23/2012 - Configuration View and Details are working.
-Left to do: 1) Implement Solomon's Test Result inclusion to the database.
-			This should be done, finished, and tested.
-			2) Implement IDsid last user who access or modified a test result.
-			Update on IDsid problem: Any user accessing this web application
-			will authenticate as "Anonymous". To implement this, we must further
-			implement Solomon's Login page credential to extend to the configuration
-			page context also.
-11/14/2012 - Beta Release v1.0 - Full features of
-			1) Create a BCK Configuration uploaded with a WHCK test results package is completed.
-			2) Implement full test results package import as the new BCK details view page.
-			3) Create a TestCase with a TopLevel Project Group name.
-			4) View current test results pass and failing statistics for all Project Groups, by Test Case Name, and by DriverName.
